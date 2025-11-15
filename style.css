@@ -1,0 +1,200 @@
+/* style.css - 更新 header 樣式 */
+
+/* ... (保留 body, .container 等樣式) ... */
+
+/* 導航欄樣式 - 確保所有頁面都有黑色背景 */
+header {
+    background: #333333; /* 實心深色背景 */
+    padding: 20px 0;
+    z-index: 100;
+    width: 100%;
+    /* 移除 position: absolute; 如果希望它在其他頁面也固定在頂部 */
+    /* 這裡我們先讓它在所有頁面都是正常的頂部區塊，而非浮動的 */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+}
+
+header .logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+header .logo img {
+    height: 40px;
+    vertical-align: middle;
+    margin-right: 10px;
+    filter: invert(100%);
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-left: 25px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #77aaff;
+}
+
+/* 重新調整主頁樣式，確保導航欄的黑色背景不會影響圖片 */
+.hero {
+    height: calc(100vh - 80px); /* 扣除 header 高度 (約 80px) */
+background: url('images/hero-background.jpg') no-repeat center center/cover;
+    /* ... */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-top: 0;
+}
+
+.hero-wrapper { /* 新增一個包裝層來包含 hero 內容和 header */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 確保其他頁面的內容不會被 header 遮擋 */
+.main-content {
+    /* 這裡可以移除 margin-top: 20px; 因為 header 有了實體背景，不會再與內容重疊 */
+    padding: 20px;
+    background: #fff;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex-grow: 1; /* 讓內容區塊自動填滿空間 */
+}
+
+/* ... (保留 profile-img, project-item, footer 等樣式) ... */
+
+.profile-img {
+    float: left;
+    margin-right: 20px;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 3px solid #77aaff;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.project-item {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.project-item:last-child {
+    border-bottom: none;
+}
+
+.project-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+footer {
+    padding: 20px;
+    margin-top: 20px;
+    color: #fff;
+    background-color: #333;
+    text-align: center;
+    border-top: #77aaff 3px solid;
+}
+/* style.css - 新增作品頁面樣式 */
+
+/* 新的設定：固定兩張圖一排，每張圖佔據一半空間 */
+.portfolio-grid {
+    display: grid;
+    /* 核心修改：將列數固定為 2，並讓兩列平均分配空間 (1fr 1fr) */
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px; /* 增加間距，讓兩張大圖之間有更好的區隔 */
+    margin-top: 30px;
+}
+
+/* 為了讓手機畫面仍能維持單列，可以添加一個媒體查詢 (選填) */
+@media (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* 在螢幕寬度小於 768px 時，變回一列 */
+    }
+}
+
+.portfolio-item {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px); /* 鼠標懸停時上浮效果 */
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 250px; /* 固定圖片高度 */
+    object-fit: cover; /* 確保圖片填充並裁剪 */
+    display: block;
+}
+
+.portfolio-item-info {
+    padding: 15px;
+}
+
+.portfolio-item-info h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 20px;
+}
+
+.portfolio-item-info p {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.portfolio-item-info a {
+    display: inline-block;
+    color: #77aaff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.portfolio-item-info a:hover {
+    text-decoration: underline;
+}
